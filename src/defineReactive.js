@@ -13,6 +13,8 @@ export default function defineReactive(obj, key, val) {
   Object.defineProperty(obj, key, {
     get() {
       console.log("获取：", key, val);
+
+      // get的时候收集依赖，这里是关键点
       if (Dep.target) {
         dep.depend();
         if(childOb) {
@@ -25,6 +27,8 @@ export default function defineReactive(obj, key, val) {
       console.log("设置:", key, newval);
       val = newval;
       childOb = observe(newval);
+
+      // set的时候触发依赖更新
       dep.notify();
     },
   });

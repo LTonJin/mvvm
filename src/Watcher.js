@@ -12,11 +12,16 @@ export default class Watcher{
     this.run()
   }
   get() {
+    // new Watcher的时候会在全局Dep添加new Watcher出来的实例
     Dep.target = this;
-    var value = this.getter(this.target);
-    Dep.target = null;
-    return value;
 
+    // 这里获取监听对象的值的时候会触发监听对象的get方法，在get方法中收集依赖
+    var value = this.getter(this.target);
+
+    // 收集完成之后置空
+    Dep.target = null;
+    
+    return value;
   }
 
   run() {

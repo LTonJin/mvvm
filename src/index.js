@@ -20,5 +20,5 @@ new Watcher(obj, 'c.d.m', function (val, oldVal) {
   console.log('==========');
 })
 
-obj.c.d.m = 111;
+obj.c.d.m = {};
 console.log(obj);
