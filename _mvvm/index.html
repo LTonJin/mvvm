@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <div id="app">
+    <div>hello {{ a.m.n }}</div>
+    <p>{{ b }} </p>
+    <input type="text" v-model="b">
+  </div>
+  <script src="./index.js"></script>
+  <script>
+    var l = new Mvvm({
+      el: "#app",
+      data: {
+        a: {
+          m: {
+            n: 'is n'
+          }
+        },
+        b: 2
+      }
+    })
+  </script>
+</body>
+</html>
